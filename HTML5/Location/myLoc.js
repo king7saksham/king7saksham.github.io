@@ -7,7 +7,7 @@ var map;
 var watchId = null;
 
 function watchLocation () {
-  watchId = navigator.geolocation.getCurrentPosition(displayLocation, displayError);
+  watchId = navigator.geolocation.watchPosition(displayLocation, displayError);
 }
 
 function clearWatch() {
