@@ -63,6 +63,7 @@ function displayLocation (position) {
   var km = computeDistance(position.coords, ourCoords);
   var distance = document.getElementById("distance");
   distance.innerHTML = "You are " + km + " km away from WickedlySmart HQ";
+  distance.innerHTML += " with " + position.coords.accuracy + " meters accuracy";
 
   showMap(position.coords);
 }
