@@ -1,0 +1,47 @@
+body {
+    background-color: black;
+}
+
+div#board {
+    position: center;
+    width: 712px;
+    height: 600px;
+    margin: auto;
+    background: url("../images/Background.png") no-repeat;
+}
+
+div#messageArea {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #83AF19;
+    font-size: 3em;
+}
+
+table {
+    position: relative;
+    left: 119px;
+    top: 70px;
+    border-spacing: 0;
+}
+
+td {
+    width: 65px;
+    height: 65px;
+}
+
+.hit {
+    background: url("../images/ship2.png") no-repeat center center;
+}
+
+.miss {
+    background: url("../images/miss2.png") no-repeat center center;
+}
+
+.guessButton {
+    height: 100%;
+    width: 100%;
+
+    background-color: transparent;
+    border-color: transparent;
+}

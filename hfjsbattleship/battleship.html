@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Battleship</title>
+        <link rel="stylesheet" href="css/battleship.css">
+    </head>
+    <body>
+    <div id="board">
+        <div id="messageArea"></div>
+        <table>
+            <tr>
+                <td id="00"><button name="00" class="guessButton" onclick="handleButton(this.name)"></button></td>
+                <td id="01"><button name="01" class="guessButton" onclick="handleButton(this.name)"></button></td>
+                <td id="02"><button name="02" class="guessButton" onclick="handleButton(this.name)"></button></td>
+                <td id="03"><button name="03" class="guessButton" onclick="handleButton(this.name)"></button></td>
+                <td id="04"><button name="04" class="guessButton" onclick="handleButton(this.name)"></button></td>
+                <td id="05"><button name="05" class="guessButton" onclick="handleButton(this.name)"></button></td>
+                <td id="06"><button name="06" class="guessButton" onclick="handleButton(this.name)"></button></td>
+            </tr>
+            <tr>
+                <td id="10"><button name="10" class="guessButton" onclick="handleButton(this.name)"></button></td>
+                <td id="11"><button name="11" class="guessButton" onclick="handleButton(this.name)"></button></td>
+                <td id="12"><button name="12" class="guessButton" onclick="handleButton(this.name)"></button></td>
+                <td id="13"><button name="13" class="guessButton" onclick="handleButton(this.name)"></button></td>
+                <td id="14"><button name="14" class="guessButton" onclick="handleButton(this.name)"></button></td>
+                <td id="15"><button name="15" class="guessButton" onclick="handleButton(this.name)"></button></td>
+                <td id="16"><button name="16" class="guessButton" onclick="handleButton(this.name)"></button></td>
+            </tr>
+            <tr>
+                <td id="20"><button name="20" class="guessButton" onclick="handleButton(this.name)"></button></td>
+                <td id="21"><button name="21" class="guessButton" onclick="handleButton(this.name)"></button></td>
+                <td id="22"><button name="22" class="guessButton" onclick="handleButton(this.name)"></button></td>
+                <td id="23"><button name="23" class="guessButton" onclick="handleButton(this.name)"></button></td>
+                <td id="24"><button name="24" class="guessButton" onclick="handleButton(this.name)"></button></td>
+                <td id="25"><button name="25" class="guessButton" onclick="handleButton(this.name)"></button></td>
+                <td id="26"><button name="26" class="guessButton" onclick="handleButton(this.name)"></button></td>
+            </tr>
+            <tr>
+                <td id="30"><button name="30" class="guessButton" onclick="handleButton(this.name)"></button></td>
+                <td id="31"><button name="31" class="guessButton" onclick="handleButton(this.name)"></button></td>
+                <td id="32"><button name="32" class="guessButton" onclick="handleButton(this.name)"></button></td>
+                <td id="33"><button name="33" class="guessButton" onclick="handleButton(this.name)"></button></td>
+                <td id="34"><button name="34" class="guessButton" onclick="handleButton(this.name)"></button></td>
+                <td id="35"><button name="35" class="guessButton" onclick="handleButton(this.name)"></button></td>
+                <td id="36"><button name="36" class="guessButton" onclick="handleButton(this.name)"></button></td>
+            </tr>
+            <tr>
+                <td id="40"><button name="40" class="guessButton" onclick="handleButton(this.name)"></button></td>
+                <td id="41"><button name="41" class="guessButton" onclick="handleButton(this.name)"></button></td>
+                <td id="42"><button name="42" class="guessButton" onclick="handleButton(this.name)"></button></td>
+                <td id="43"><button name="43" class="guessButton" onclick="handleButton(this.name)"></button></td>
+                <td id="44"><button name="44" class="guessButton" onclick="handleButton(this.name)"></button></td>
+                <td id="45"><button name="45" class="guessButton" onclick="handleButton(this.name)"></button></td>
+                <td id="46"><button name="46" class="guessButton" onclick="handleButton(this.name)"></button></td>
+            </tr>
+            <tr>
+                <td id="50"><button name="50" class="guessButton" onclick="handleButton(this.name)"></button></td>
+                <td id="51"><button name="51" class="guessButton" onclick="handleButton(this.name)"></button></td>
+                <td id="52"><button name="52" class="guessButton" onclick="handleButton(this.name)"></button></td>
+                <td id="53"><button name="53" class="guessButton" onclick="handleButton(this.name)"></button></td>
+                <td id="54"><button name="54" class="guessButton" onclick="handleButton(this.name)"></button></td>
+                <td id="55"><button name="55" class="guessButton" onclick="handleButton(this.name)"></button></td>
+                <td id="56"><button name="56" class="guessButton" onclick="handleButton(this.name)"></button></td>
+            </tr>
+            <tr>
+                <td id="60"><button name="60" class="guessButton" onclick="handleButton(this.name)"></button></td>
+                <td id="61"><button name="61" class="guessButton" onclick="handleButton(this.name)"></button></td>
+                <td id="62"><button name="62" class="guessButton" onclick="handleButton(this.name)"></button></td>
+                <td id="63"><button name="63" class="guessButton" onclick="handleButton(this.name)"></button></td>
+                <td id="64"><button name="64" class="guessButton" onclick="handleButton(this.name)"></button></td>
+                <td id="65"><button name="65" class="guessButton" onclick="handleButton(this.name)"></button></td>
+                <td id="66"><button name="66" class="guessButton" onclick="handleButton(this.name)"></button></td>
+            </tr>
+        </table>
+    </div>
+    <script src="js/battleship.js"></script>
+    </body>
+</html>
