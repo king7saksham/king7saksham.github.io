@@ -1,6 +1,6 @@
-This is th collection of all the websites and games created bt me.
-List includes:- 
-(i) Starbuzz Coffee WebPage - king7saksham.github.io
-(ii) Loction Finder - king7saksham.github.io/HTML5/Location/myLoc.html
-(iii) Battleship Game - king7saksham.github.io/hfjsbattleship/battleship.html
-(iv) Minesweeper Game - king7saksham.github.io/Minesweeper
+This is the collection of all the websites and games created bt me.<br/>
+List includes:- <br/>
+(i) Starbuzz Coffee WebPage - https://king7saksham.github.io/ <br/>
+(ii) Loction Finder - https://king7saksham.github.io/HTML5/Location/myLoc.html/ <br/>
+(iii) Battleship Game - https://king7saksham.github.io/hfjsbattleship/battleship.html/ <br/>
+(iv) Minesweeper Game - https://king7saksham.github.io/Minesweeper/ <br/>
