@@ -1,0 +1,72 @@
+body {
+    background-image: url("../images/background.jpg");
+}
+.tile {
+    height: 30px;
+    width: 30px;
+    background-color: #CCC;
+    border: 5px outset;
+}
+
+.square {
+    height: 38px;
+    width: 38px;
+    background-color: #CCC;
+    border: 1px solid grey;
+}
+
+h1 {
+    position: relative;
+    text-align: center;
+    font-family: fantasy;
+    font-size: 40px;
+    color: darkblue;
+}
+
+table {
+    background-color: #567;
+    border: 5px inset;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+td {
+    text-align: center;
+    font-size: xx-large;
+    font-family: "Frank Ruehl CLM", serif;
+}
+
+table#hed {
+    background-color: #CCC;
+    border: 5px outset;
+}
+
+.flag {
+    height: 30px;
+    width: 30px;
+    background-color: #CCC;
+    border: 5px outset;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#mines {
+    color: aqua;
+    width: 380px;
+    text-align: left;
+}
+
+#time {
+    color: aqua;
+    width: 380px;
+    text-align: right;
+}
+
+#newGame {
+    font-size: large;
+    height: 30px;
+    width: 98px;
+    background-color: #CCC;
+    border: 5px outset;
+}
