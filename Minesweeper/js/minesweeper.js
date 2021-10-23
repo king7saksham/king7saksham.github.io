@@ -259,7 +259,9 @@ let controller = {
 
     processLeftClick: function (eventObj) {
         let cell = eventObj.target;
-        model.cellChecker(cell);
+        if (cell.className !== "flag") {
+            model.cellChecker(cell);
+        }
     },
 
     processRightClick: function (eventObj) {
