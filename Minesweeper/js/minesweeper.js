@@ -33,20 +33,20 @@ let view = {
     displayFlag: function (location) {
         let cell = document.getElementById(location);
         cell.setAttribute("class", "flag");
-        cell.style.backgroundImage = "url(\"../Minesweeper/images/flag.png\")";
+        cell.style.backgroundImage = "url(\"king7saksham.github.io/Minesweeper/images/flag.png\")";
     },
 
     displayMine: function (location, clicked) {
         let cell = document.getElementById(location);
         if (clicked === undefined) {
             if (cell.className === "flag") {
-                cell.style.backgroundImage = "url(\"../Minesweeper/images/ok.png\")"
+                cell.style.backgroundImage = "url(\"../images/ok.png\")"
             } else {
-                cell.style.backgroundImage = "url(\"../Minesweeper/images/mine.png\")"
+                cell.style.backgroundImage = "url(\"../images/mine.png\")"
             }
         } else {
             cell.style.backgroundColor = "red";
-            cell.style.backgroundImage = "url(\"../Minesweeper/images/mine.png\")"
+            cell.style.backgroundImage = "url(\"../images/mine.png\")"
         }
         cell.setAttribute("class", "square");
         cell.style.backgroundPosition = "center";
