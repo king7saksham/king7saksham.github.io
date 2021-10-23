@@ -33,7 +33,7 @@ let view = {
     displayFlag: function (location) {
         let cell = document.getElementById(location);
         cell.setAttribute("class", "flag");
-        cell.style.backgroundImage = "url(\"king7saksham.github.io/Minesweeper/images/flag.png\")";
+        cell.style.backgroundImage = "url(\images/flag.png\")";
     },
 
     displayMine: function (location, clicked) {
