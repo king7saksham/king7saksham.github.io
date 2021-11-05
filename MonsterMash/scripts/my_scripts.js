@@ -3,10 +3,10 @@ let thunder = [];
 
 $(function(){
     let headclix = 0, eyesclix = 0, noseclix = 0, mouthclix = 0;
-    rain = new Audio("../sounds/lightRain.wav");
-    thunder[0] = new Audio("../sounds/thunder1.mp3");
-    thunder[1] = new Audio("../sounds/thunder2.mp3");
-    thunder[2] = new Audio("../sounds/thunder3.mp3");
+    rain = new Audio("sounds/lightRain.wav");
+    thunder[0] = new Audio("sounds/thunder1.mp3");
+    thunder[1] = new Audio("sounds/thunder2.mp3");
+    thunder[2] = new Audio("sounds/thunder3.mp3");
 
     mute = true;
 
