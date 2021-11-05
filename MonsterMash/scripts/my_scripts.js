@@ -16,14 +16,14 @@ $(function(){
             for (let i = 0; i < 3; i++) {
                 thunder[i].muted = false;
             }
-            $("#speaker").attr("src", "../images/muteoff.png");
+            $("#speaker").attr("src", "images/muteoff.png");
             rain.play();
         } else {
             mute = true;
             for (let i = 0; i < 3; i++) {
                 thunder[i].muted = true;
             }
-            $("#speaker").attr("src", "../images/muteon.png");
+            $("#speaker").attr("src", "images/muteon.png");
             rain.pause();
         }
     })
