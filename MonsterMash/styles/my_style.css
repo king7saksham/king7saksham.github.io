@@ -4,7 +4,7 @@
     top: 100px;
     width: 545px;
     height: 629px;
-    background-image: url("/images/frame.png");
+    background-image: url("../images/frame.png");
     z-index: 2;
     overflow: hidden;
 }
