@@ -2,7 +2,38 @@ let rain, mute;
 let thunder = [];
 
 $(function(){
-    let headclix = 0, eyesclix = 0, noseclix = 0, mouthclix = 0;
+    let interval = [];
+    goLightning();
+    window.onblur = stopLightning;
+    window.onfocus = goLightning;
+
+    function lightning(num, t) {
+        interval[num] = setInterval(function () {
+            $("#container #lightning" + num).fadeIn("fast").fadeOut("fast");
+            if (!mute) {
+                thunder[num - 1].play();
+            }
+        }, t);
+    }
+
+    function endLightning(num) {
+        window.clearInterval(interval[num]);
+    }
+
+    function goLightning() {
+        lightning(1, 4000);
+        lightning(2, 5000);
+        lightning(3, 7000);
+    }
+
+    function stopLightning() {
+        endLightning(1);
+        endLightning(2);
+        endLightning(3);
+    }
+
+
+    let clix = [0, 0, 0, 0];
     rain = new Audio("sounds/lightRain.wav");
     thunder[0] = new Audio("sounds/thunder1.mp3");
     thunder[1] = new Audio("sounds/thunder2.mp3");
@@ -26,35 +57,55 @@ $(function(){
             $("#speaker").attr("src", "images/muteon.png");
             rain.pause();
         }
-    })
+    });
 
-    lightning(1, 4000);
-    lightning(2, 5000);
-    lightning(3, 7000);
+    $("#head").on("click", counter(0));
+    $("#eyes").on("click",counter(1));
+    $("#nose").on("click",counter(2));
+    $("#mouth").on("click",counter(3));
 
-    $("#head").on("click", counter(headclix));
-    $("#eyes").on("click",counter(eyesclix));
-    $("#nose").on("click",counter(noseclix));
-    $("#mouth").on("click",counter(mouthclix));
+    function counter(i) {
+        return function () {
+            if (clix[i] < 9) {
+                clix[i]++;
+                $(this).animate({left:"-=367"}, 500);
+            } else {
+                clix[i] = 0;
+                $(this).animate({left:"0px"}, 500);
+            }
+        };
+    }
+
+    const w = 367;
+    const m = 10;
+
+    $("#btnRandom").on("click", randomize);
+    $("#btnReset").on("click", reset);
+
+    function getRandom(num) {
+        return Math.floor(Math.random()*num);
+    }
+
+    function randomize(){
+        $(".face").each(function (index){
+            let target_position = getRandom(m);
+            let current_position = clix[index];
+            clix[index] = target_position;
+
+            if (target_position > current_position) {
+                let move_to = (target_position - current_position) * w;
+                $(this).animate({left:"-=" + move_to + "px"}, 500);
+            } else if (target_position < current_position) {
+                let move_to = (current_position - target_position) * w;
+                $(this).animate({left:"+=" + move_to + "px"}, 500);
+            }
+        });
+    }
+
+    function reset(){
+        $(".face").each(function (index){
+            $(this).animate({left: "0px"}, 500);
+            clix[index] = 0;
+        });
+    }
 });
-
-function counter(clix) {
-    return function () {
-        if (clix < 9) {
-            clix++;
-            $(this).animate({left:"-=367"}, 500);
-        } else {
-            clix = 0;
-            $(this).animate({left:"0px"}, 500);
-        }
-    };
-}
-
-function lightning(num, t) {
-    setInterval(function () {
-        $("#container #lightning" + num).fadeIn("fast").fadeOut("fast");
-        if (!mute) {
-            thunder[num - 1].play();
-        }
-    }, t);
-}

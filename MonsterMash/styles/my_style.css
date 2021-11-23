@@ -1,3 +1,6 @@
+button {
+    margin-left: 10px;
+}
 #frame {
     position: absolute;
     left: 100px;
