@@ -1,0 +1,213 @@
+h1 {
+    text-align: center;
+    font-family: 'Smokum', cursive;
+    font-size: 4em;
+    color: greenyellow;
+}
+
+div.flex {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 30px;
+    margin-right: 30px;
+    background-image: url("../images/tvbackground.png");
+    width: 1500px;
+    height: 640px;
+}
+
+div.map-image {
+    background-image: url("../images/parkMap.png");
+    margin-left: 113px;
+    margin-top: 61px;
+    width: 554px;
+    height: 310px;
+    border: double 1px;
+}
+
+div.park1-image {
+    background-image: url("../images/park1.png");
+}
+
+div.park2-image {
+    background-image: url("../images/park2.png");
+}
+
+div.gate1-image {
+    background-image: url("../images/gate1.png");
+}
+
+div.gate2-image {
+    background-image: url("../images/gate2.png");
+}
+
+div.bigGate-image {
+    background-image: url("../images/bigGate.png");
+}
+
+div.waitingArea-image {
+    background-image: url("../images/waitingArea.png");
+}
+
+div.path1-image {
+    background-image: url("../images/path1.png");
+}
+
+div.path2-image {
+    background-image: url("../images/path2.png");
+}
+
+div.pathCut-image {
+    background-image: url("../images/pathCut.png");
+}
+
+div.miniPath-image {
+    background-image: url("../images/miniPath.png");
+}
+
+div.openGym1-image {
+    background-image: url("../images/opengym.png");
+}
+
+div.openGym2-image {
+    background-image: url("../images/opengym2.png");
+}
+
+div.bench-image {
+    background-image: url("../images/bench.png");
+}
+
+div.fence-image {
+    background-image: url("../images/fence.png");
+}
+
+div.shed-image {
+    background-image: url("../images/shed.png");
+}
+
+div#park {
+    position: relative;
+    width: 592px;
+    height: 332px;
+    margin-top: 66px;
+    margin-right: 131px;
+}
+
+div#gate1 {
+    position: absolute;
+    height: 40px;
+    width: 50px;
+    top: 210px;
+    left: 410px;
+}
+
+div#gate2 {
+    position: absolute;
+    height: 40px;
+    width: 50px;
+    top: 380px;
+    left: 430px;
+}
+
+div#bigGate {
+    position: absolute;
+    height: 40px;
+    width: 50px;
+    top: 210px;
+    left: 360px;
+}
+
+div#waitingArea {
+    position: absolute;
+    height: 40px;
+    width: 50px;
+    top: 250px;
+    left: 410px;
+}
+
+div#park1 {
+    position: absolute;
+    height: 80px;
+    width: 120px;
+    top: 280px;
+    left: 290px;
+}
+
+div#park2 {
+    position: absolute;
+    height: 80px;
+    width: 120px;
+    top: 270px;
+    left: 465px;
+}
+
+div#path1{
+    position: absolute;
+    height: 40px;
+    width: 50px;
+    top: 210px;
+    left: 460px;
+}
+
+div#path2{
+    position: absolute;
+    height: 70px;
+    width: 40px;
+    top: 270px;
+    left: 240px;
+}
+
+div#pathCut{
+    position: absolute;
+    height: 50px;
+    width: 40px;
+    top: 340px;
+    left: 240px;
+}
+
+div#miniPath{
+    position: absolute;
+    height: 70px;
+    width: 30px;
+    top: 300px;
+    left: 430px;
+}
+
+div#openGym1{
+    position: absolute;
+    height: 50px;
+    width: 40px;
+    top: 280px;
+    left: 590px;
+}
+
+div#openGym2{
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    top: 270px;
+    left: 190px;
+}
+
+div#bench{
+    position: absolute;
+    height: 30px;
+    width: 50px;
+    top: 380px;
+    left: 300px;
+}
+
+div#fence{
+    position: absolute;
+    height: 30px;
+    width: 50px;
+    top: 380px;
+    left: 350px;
+}
+
+div#shed{
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    top: 215px;
+    left: 570px;
+}
