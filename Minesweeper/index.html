@@ -1,245 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Saksham's Minesweeper</title>
-        <link rel="stylesheet" href="css/minesweeper.css">
-        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    </head>
-    <body>
-    <h1>MINESWEEPER</h1>
+<head>
+    <meta charset="UTF-8">
+    <title>Saksham's Minesweeper</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/minesweeper.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<h1>MINESWEEPER</h1>
 
-    <div id="board">
-        <table id="head">
-            <tr>
-                <td id="mines"></td>
-                <td id="newGame"></td>
-                <td id="time"></td>
-            </tr>
-        </table>
-        <table>
-            <tr>
-                <td id="000" class="tile"></td>
-                <td id="001" class="tile"></td>
-                <td id="002" class="tile"></td>
-                <td id="003" class="tile"></td>
-                <td id="004" class="tile"></td>
-                <td id="005" class="tile"></td>
-                <td id="006" class="tile"></td>
-                <td id="007" class="tile"></td>
-                <td id="008" class="tile"></td>
-                <td id="009" class="tile"></td>
-                <td id="010" class="tile"></td>
-                <td id="011" class="tile"></td>
-                <td id="012" class="tile"></td>
-                <td id="013" class="tile"></td>
-                <td id="014" class="tile"></td>
-                <td id="015" class="tile"></td>
-                <td id="016" class="tile"></td>
-                <td id="017" class="tile"></td>
-                <td id="018" class="tile"></td>
-                <td id="019" class="tile"></td>
-            </tr>
-            <tr>
-                <td id="100" class="tile"></td>
-                <td id="101" class="tile"></td>
-                <td id="102" class="tile"></td>
-                <td id="103" class="tile"></td>
-                <td id="104" class="tile"></td>
-                <td id="105" class="tile"></td>
-                <td id="106" class="tile"></td>
-                <td id="107" class="tile"></td>
-                <td id="108" class="tile"></td>
-                <td id="109" class="tile"></td>
-                <td id="110" class="tile"></td>
-                <td id="111" class="tile"></td>
-                <td id="112" class="tile"></td>
-                <td id="113" class="tile"></td>
-                <td id="114" class="tile"></td>
-                <td id="115" class="tile"></td>
-                <td id="116" class="tile"></td>
-                <td id="117" class="tile"></td>
-                <td id="118" class="tile"></td>
-                <td id="119" class="tile"></td>
-            </tr>
-            <tr>
-                <td id="200" class="tile"></td>
-                <td id="201" class="tile"></td>
-                <td id="202" class="tile"></td>
-                <td id="203" class="tile"></td>
-                <td id="204" class="tile"></td>
-                <td id="205" class="tile"></td>
-                <td id="206" class="tile"></td>
-                <td id="207" class="tile"></td>
-                <td id="208" class="tile"></td>
-                <td id="209" class="tile"></td>
-                <td id="210" class="tile"></td>
-                <td id="211" class="tile"></td>
-                <td id="212" class="tile"></td>
-                <td id="213" class="tile"></td>
-                <td id="214" class="tile"></td>
-                <td id="215" class="tile"></td>
-                <td id="216" class="tile"></td>
-                <td id="217" class="tile"></td>
-                <td id="218" class="tile"></td>
-                <td id="219" class="tile"></td>
-            </tr>
-            <tr>
-                <td id="300" class="tile"></td>
-                <td id="301" class="tile"></td>
-                <td id="302" class="tile"></td>
-                <td id="303" class="tile"></td>
-                <td id="304" class="tile"></td>
-                <td id="305" class="tile"></td>
-                <td id="306" class="tile"></td>
-                <td id="307" class="tile"></td>
-                <td id="308" class="tile"></td>
-                <td id="309" class="tile"></td>
-                <td id="310" class="tile"></td>
-                <td id="311" class="tile"></td>
-                <td id="312" class="tile"></td>
-                <td id="313" class="tile"></td>
-                <td id="314" class="tile"></td>
-                <td id="315" class="tile"></td>
-                <td id="316" class="tile"></td>
-                <td id="317" class="tile"></td>
-                <td id="318" class="tile"></td>
-                <td id="319" class="tile"></td>
-            </tr>
-            <tr>
-                <td id="400" class="tile"></td>
-                <td id="401" class="tile"></td>
-                <td id="402" class="tile"></td>
-                <td id="403" class="tile"></td>
-                <td id="404" class="tile"></td>
-                <td id="405" class="tile"></td>
-                <td id="406" class="tile"></td>
-                <td id="407" class="tile"></td>
-                <td id="408" class="tile"></td>
-                <td id="409" class="tile"></td>
-                <td id="410" class="tile"></td>
-                <td id="411" class="tile"></td>
-                <td id="412" class="tile"></td>
-                <td id="413" class="tile"></td>
-                <td id="414" class="tile"></td>
-                <td id="415" class="tile"></td>
-                <td id="416" class="tile"></td>
-                <td id="417" class="tile"></td>
-                <td id="418" class="tile"></td>
-                <td id="419" class="tile"></td>
-            </tr>
-            <tr>
-                <td id="500" class="tile"></td>
-                <td id="501" class="tile"></td>
-                <td id="502" class="tile"></td>
-                <td id="503" class="tile"></td>
-                <td id="504" class="tile"></td>
-                <td id="505" class="tile"></td>
-                <td id="506" class="tile"></td>
-                <td id="507" class="tile"></td>
-                <td id="508" class="tile"></td>
-                <td id="509" class="tile"></td>
-                <td id="510" class="tile"></td>
-                <td id="511" class="tile"></td>
-                <td id="512" class="tile"></td>
-                <td id="513" class="tile"></td>
-                <td id="514" class="tile"></td>
-                <td id="515" class="tile"></td>
-                <td id="516" class="tile"></td>
-                <td id="517" class="tile"></td>
-                <td id="518" class="tile"></td>
-                <td id="519" class="tile"></td>
-            </tr>
-            <tr>
-                <td id="600" class="tile"></td>
-                <td id="601" class="tile"></td>
-                <td id="602" class="tile"></td>
-                <td id="603" class="tile"></td>
-                <td id="604" class="tile"></td>
-                <td id="605" class="tile"></td>
-                <td id="606" class="tile"></td>
-                <td id="607" class="tile"></td>
-                <td id="608" class="tile"></td>
-                <td id="609" class="tile"></td>
-                <td id="610" class="tile"></td>
-                <td id="611" class="tile"></td>
-                <td id="612" class="tile"></td>
-                <td id="613" class="tile"></td>
-                <td id="614" class="tile"></td>
-                <td id="615" class="tile"></td>
-                <td id="616" class="tile"></td>
-                <td id="617" class="tile"></td>
-                <td id="618" class="tile"></td>
-                <td id="619" class="tile"></td>
-            </tr>
-            <tr>
-                <td id="700" class="tile"></td>
-                <td id="701" class="tile"></td>
-                <td id="702" class="tile"></td>
-                <td id="703" class="tile"></td>
-                <td id="704" class="tile"></td>
-                <td id="705" class="tile"></td>
-                <td id="706" class="tile"></td>
-                <td id="707" class="tile"></td>
-                <td id="708" class="tile"></td>
-                <td id="709" class="tile"></td>
-                <td id="710" class="tile"></td>
-                <td id="711" class="tile"></td>
-                <td id="712" class="tile"></td>
-                <td id="713" class="tile"></td>
-                <td id="714" class="tile"></td>
-                <td id="715" class="tile"></td>
-                <td id="716" class="tile"></td>
-                <td id="717" class="tile"></td>
-                <td id="718" class="tile"></td>
-                <td id="719" class="tile"></td>
-            </tr>
-            <tr>
-                <td id="800" class="tile"></td>
-                <td id="801" class="tile"></td>
-                <td id="802" class="tile"></td>
-                <td id="803" class="tile"></td>
-                <td id="804" class="tile"></td>
-                <td id="805" class="tile"></td>
-                <td id="806" class="tile"></td>
-                <td id="807" class="tile"></td>
-                <td id="808" class="tile"></td>
-                <td id="809" class="tile"></td>
-                <td id="810" class="tile"></td>
-                <td id="811" class="tile"></td>
-                <td id="812" class="tile"></td>
-                <td id="813" class="tile"></td>
-                <td id="814" class="tile"></td>
-                <td id="815" class="tile"></td>
-                <td id="816" class="tile"></td>
-                <td id="817" class="tile"></td>
-                <td id="818" class="tile"></td>
-                <td id="819" class="tile"></td>
-            </tr>
-            <tr>
-                <td id="900" class="tile"></td>
-                <td id="901" class="tile"></td>
-                <td id="902" class="tile"></td>
-                <td id="903" class="tile"></td>
-                <td id="904" class="tile"></td>
-                <td id="905" class="tile"></td>
-                <td id="906" class="tile"></td>
-                <td id="907" class="tile"></td>
-                <td id="908" class="tile"></td>
-                <td id="909" class="tile"></td>
-                <td id="910" class="tile"></td>
-                <td id="911" class="tile"></td>
-                <td id="912" class="tile"></td>
-                <td id="913" class="tile"></td>
-                <td id="914" class="tile"></td>
-                <td id="915" class="tile"></td>
-                <td id="916" class="tile"></td>
-                <td id="917" class="tile"></td>
-                <td id="918" class="tile"></td>
-                <td id="919" class="tile"></td>
-            </tr>
-        </table>
+<div id="board">
+    <div id="head">
+        <div id="mines"></div>
+        <div id="controls">
+            <div id="newGame"></div>
+            <div id="level">Choose Level</div>
+        </div>
+        <div id="time"></div>
     </div>
-        <script src="js/minesweeper.js"></script>
-    </body>
+    <table id="ground"></table>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="js/minesweeper.js"></script>
+</body>
 </html>

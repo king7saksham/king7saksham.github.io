@@ -1,18 +1,13 @@
 body {
     background-image: url("../images/background.jpg");
-}
-.tile {
-    height: 30px;
-    width: 30px;
-    background-color: #CCC;
-    border: 5px outset;
-}
+    background-size: cover;
 
-.square {
-    height: 38px;
-    width: 38px;
-    background-color: #CCC;
-    border: 1px solid grey;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: default;
 }
 
 h1 {
@@ -23,23 +18,37 @@ h1 {
     color: darkblue;
 }
 
-table {
+table, #head {
     background-color: #567;
     border: 5px inset;
-    position: relative;
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto;
 }
 
 td {
     text-align: center;
-    font-size: xx-large;
-    font-family: "Frank Ruehl CLM", serif;
+    font-size: 1.8rem;
+    font-family: 'Orbitron', sans-serif;
 }
 
-table#hed {
+.tile {
+    height: 30px;
+    width: 30px;
     background-color: #CCC;
     border: 5px outset;
+}
+
+.tile:active {
+    height: 38px;
+    width: 38px;
+    background-color: #CCC;
+    border: 1px solid grey;
+}
+
+.square {
+    height: 38px;
+    width: 38px;
+    background-color: #CCC;
+    border: 1px solid grey;
 }
 
 .flag {
@@ -47,26 +56,79 @@ table#hed {
     width: 30px;
     background-color: #CCC;
     border: 5px outset;
+    background-image: url("../images/flag.png");
     background-repeat: no-repeat;
     background-position: center;
 }
 
+#head {
+    display: flex;
+    justify-content: space-between;
+    font-size: 36px;
+    text-align: center;
+}
+
+#controls {
+    display: flex;
+    justify-content: center;
+}
+
 #mines {
     color: aqua;
-    width: 380px;
     text-align: left;
+    width: 50px;
+    padding-left: 5px;
+    padding-top: 1px;
 }
 
 #time {
     color: aqua;
-    width: 380px;
     text-align: right;
+    width: 50px;
+    padding-right: 5px;
+    padding-top: 1px;
 }
 
 #newGame {
     font-size: large;
     height: 30px;
-    width: 98px;
+    width: 118px;
     background-color: #CCC;
     border: 5px outset;
+    text-align: center;
+    margin: 0 5px;
+    padding-top: 3%;
+}
+
+#newGame:active {
+    font-size: large;
+    height: 30px;
+    width: 118px;
+    background-color: #CCC;
+    border: 5px inset #ddd;
+    transform: translate(2px, 2px);
+    margin: 0 5px;
+    padding-top: 3%;
+}
+
+#level {
+    font-size: large;
+    background-color: #CCC;
+    border: 5px outset;
+    height: 30px;
+    width: 118px;
+    text-align: center;
+    margin: 0 5px;
+    padding-top: 3%;
+}
+
+#level:active {
+    font-size: large;
+    background-color: #CCC;
+    height: 30px;
+    width: 118px;
+    border: 5px inset #ddd;
+    transform: translate(2px, 2px);
+    margin: 0 5px;
+    padding-top: 3%;
 }

@@ -5,52 +5,62 @@ let timeCount = 0;
 let mines;
 let time;
 let newGame;
+const levels = {
+    NONE: [9, 9, 10, 0],
+    EASY: [9, 9, 10],
+    MEDIUM: [16, 16, 40],
+    HARD: [30, 16, 99]
+};
+let levelSelected = levels.NONE;
 
 setInterval(function () {
     if (running) {
         timeCount++;
-        time.innerHTML = timeCount;
+        time.text(timeCount);
     }
 }, 1000);
 
 
 let view = {
     displayCell: function (location) {
-        let cell = document.getElementById(location);
-        cell.setAttribute("class", "tile");
-        cell.style.backgroundImage = "none";
+        let $cell = $("#" + location);
+        $cell.removeClass();
+        $cell.addClass("tile");
+        // cell.style.backgroundImage = "none";
     },
 
     displayNum: function (location, num) {
-        let cell = document.getElementById(location);
-        cell.setAttribute("class", "square");
+        let $cell = $("#" + location);
+        $cell.removeClass();
+        $cell.addClass("square");
         if (num > 0) {
-            cell.innerHTML = num;
-            cell.style.color = this.numColor(num);
+            $cell.text(num);
+            $cell.css("color", this.numColor(num));
         }
     },
 
     displayFlag: function (location) {
-        let cell = document.getElementById(location);
-        cell.setAttribute("class", "flag");
-        cell.style.backgroundImage = "url(\"/Minesweeper/images/flag.png\")";
+        let $cell = $("#" + location);
+        $cell.removeClass();
+        $cell.addClass("flag");
     },
 
     displayMine: function (location, clicked) {
-        let cell = document.getElementById(location);
+        let $cell = $("#" + location);
         if (clicked === undefined) {
-            if (cell.className === "flag") {
-                cell.style.backgroundImage = "url(\"/Minesweeper/images/ok.png\")"
+            if ($cell.attr("class") === "flag") {
+                $cell.css("background-image", "url(\"/Minesweeper/images/ok.png\")");
             } else {
-                cell.style.backgroundImage = "url(\"/Minesweeper/images/mine.png\")"
+                $cell.css("background-image", "url(\"/Minesweeper/images/mine.png\")");
             }
         } else {
-            cell.style.backgroundColor = "red";
-            cell.style.backgroundImage = "url(\"/Minesweeper/images/mine.png\")"
+            $cell.css("background-color", "red");
+            $cell.css("background-image", "url(\"/Minesweeper/images/mine.png\")");
         }
-        cell.setAttribute("class", "square");
-        cell.style.backgroundPosition = "center";
-        cell.style.backgroundRepeat = "no-repeat";
+        $cell.removeClass();
+        $cell.addClass("square");
+        $cell.css("background-position", "center");
+        $cell.css("background-repeat", "no-repeat");
     },
 
     numColor: function (num) {
@@ -77,31 +87,44 @@ let view = {
 }
 
 let model = {
-    width: 20,
-    height: 10,
-    numMine: 20,
+    width: levelSelected[0],
+    height: levelSelected[1],
+    numMine: levelSelected[2],
+
+    refreshLevel: function () {
+        this.width= levelSelected[0];
+        this.height= levelSelected[1];
+        this.numMine= levelSelected[2];
+    },
 
     generateBoard: function () {
+        let $ground = $("#ground");
+        $ground.empty();
         this.board = new Array(this.height);
+
         for (let i = 0; i < this.height; i++) {
+            let $row = $("<tr></tr>");
             this.board[i] = new Array(this.width);
             for (let j = 0; j < this.width; j++) {
                 this.board[i][j] = 0;
 
 
-                let cell = document.getElementById(this.locationConverter(i,j));
-                cell.setAttribute("class", "tile");
-                cell.style.backgroundColor = "#CCC";
-                cell.innerHTML = "";
-                cell.style.backgroundImage = "none";
+                let $cell = $("<td></td>");
+                $cell.addClass("tile");
+                $cell.attr("id", this.locationConverter(i, j));
+                $row.append($cell);
             }
+
+            $ground.append($row);
         }
+
+        $("#head").width($ground.width());
     },
 
     generateMineLocations: function () {
         for (let i = 0; i < this.numMine; i++) {
             let occupied = true;
-            let x,y;
+            let x = 0, y = 0;
             while (occupied) {
                 x = Math.floor(Math.random() * this.height);
                 y = Math.floor(Math.random() * this.width);
@@ -131,49 +154,51 @@ let model = {
             for (let j = 0; j < this.width; j++) {
                 if (this.board[i][j] === -1) {
                     if (i === a && j === b) {
-                        view.displayMine(this.locationConverter(i,j), true);
+                        view.displayMine(this.locationConverter(i, j), true);
                     } else {
-                        view.displayMine(this.locationConverter(i,j));
+                        view.displayMine(this.locationConverter(i, j));
                     }
                 }
             }
         }
     },
 
-    flag: function (cell) {
-        if (cell.className === "tile") {
-            view.displayFlag(cell.id);
-            flagy--;
-        } else if (cell.className === "flag") {
-            view.displayCell(cell.id);
+    flag: function ($cell) {
+        if ($cell.attr("class") === "tile") {
+            if (flagy > 0) {
+                view.displayFlag($cell.attr("id"));
+                flagy--;
+            }
+        } else if ($cell.attr("class") === "flag") {
+            view.displayCell($cell.attr("id"));
             flagy++;
         }
 
         if (flagy >= 0) {
-            mines.innerHTML = flagy;
+            mines.text(flagy);
         }
     },
 
-    cellChecker: function (cell) {
+    cellChecker: function ($cell) {
         running = true;
 
-        let location = cell.id;
-        let a = Number(location.charAt(0));
-        let b = Number(location.substring(1));
+        let location = $cell.attr("id");
+        let a = Number(location.substring(0, 2));
+        let b = Number(location.substring(2));
 
         if (this.board[a][b] === -1) {
             this.showAllMines(a, b);
             gameOver = true;
             running = false;
-            newGame.innerHTML = "Try Again?"
+            newGame.text("Try Again?");
         } else {
             let flags = 0;
             for (let i = -1; i < 2; i++) {
                 if (a + i >= 0 && a + i < this.height) {
                     for (let j = -1; j < 2; j++) {
                         if (b + j >= 0 && b + j < this.width) {
-                            let cell2 = document.getElementById(this.locationConverter(a+i,b+j));
-                            if (cell2.className === "flag") {
+                            let cell2 = $("#" + this.locationConverter(a + i, b + j));
+                            if (cell2.attr("class") === "flag") {
                                 flags++;
                             }
                         }
@@ -185,14 +210,14 @@ let model = {
                     if (a + i >= 0 && a + i < this.height) {
                         for (let j = -1; j < 2; j++) {
                             if (b + j >= 0 && b + j < this.width) {
-                                let cell2 = document.getElementById(this.locationConverter(a+i,b+j));
-                                if (cell2.className === "tile") {
-                                    if (this.board[a+i][b+j] === -1) {
-                                        this.showAllMines(a+i, b+j);
+                                let cell2 = $("#" + this.locationConverter(a + i, b + j));
+                                if (cell2.attr("class") === "tile") {
+                                    if (this.board[a + i][b + j] === -1) {
+                                        this.showAllMines(a + i, b + j);
                                         gameOver = true;
-                                        newGame.innerHTML = "Try Again?"
+                                        newGame.text("Try Again?");
                                     }
-                                    this.reveal((a+i), (b+j));
+                                    this.reveal((a + i), (b + j));
                                 }
                             }
                         }
@@ -203,19 +228,19 @@ let model = {
             if (this.totalTiles === this.numMine) {
                 gameOver = true;
                 running = false;
-                newGame.innerHTML = "You Won!!!"
+                newGame.text("You Won!!!");
             }
         }
     },
 
     reveal: function (a, b) {
-        let cell = document.getElementById(this.locationConverter(a,b));
-        if (cell.className === "tile") {
+        let $cell = $("#" + this.locationConverter(a, b));
+        if ($cell.attr("class") === "tile") {
             if (this.board[a][b] > 0) {
-                view.displayNum(this.locationConverter(a,b), this.board[a][b]);
+                view.displayNum(this.locationConverter(a, b), this.board[a][b]);
                 this.totalTiles--;
             } else if (this.board[a][b] === 0) {
-                view.displayNum(this.locationConverter(a,b), 0);
+                view.displayNum(this.locationConverter(a, b), 0);
                 this.totalTiles--;
                 for (let i = -1; i < 2; i++) {
                     if (a + i >= 0 && a + i < this.height) {
@@ -230,12 +255,16 @@ let model = {
         }
     },
 
-    locationConverter: function (a,b) {
-        let location;
+    locationConverter: function (a, b) {
+        let location = "";
+        if (a < 10) {
+            location = "0";
+        }
+
         if (b < 10) {
-            location = [a,b].join("0");
+            location += [a, b].join("0");
         } else {
-            location = [a,b].join("");
+            location += [a, b].join("");
         }
 
         return location;
@@ -243,63 +272,84 @@ let model = {
 }
 
 let controller = {
-    safeTiles: model.height*model.width - model.numMine,
+    safeTiles: model.height * model.width - model.numMine,
     startGame: function () {
+        model.refreshLevel();
         model.generateBoard();
         model.generateMineLocations();
-        model.totalTiles = model.height*model.width;
+        model.totalTiles = model.height * model.width;
         flagy = model.numMine;
-        mines.innerHTML = flagy;
-        time.innerHTML = 0;
+        mines.text(flagy);
+        time.text(0);
         running = false;
         gameOver = false;
         timeCount = 0;
-        newGame.innerHTML = "New Game";
+        newGame.text("New Game");
+
+        $("#ground > tr > td").each(function () {
+            $(this).click(function (eventObj) {
+                if (!gameOver) {
+                    controller.processLeftClick(eventObj);
+                }
+            });
+
+            $(this).contextmenu(function (eventObj) {
+                if (!gameOver) {
+                    controller.processRightClick(eventObj);
+                }
+            });
+        });
+    },
+
+    levelChange: function () {
+        $level = $("#level");
+        switch (levelSelected) {
+            case levels.NONE :
+                levelSelected = levels.EASY;
+                $level.text("Easy");
+                break;
+            case levels.EASY :
+                levelSelected = levels.MEDIUM;
+                $level.text("Medium");
+                break;
+            case levels.MEDIUM :
+                levelSelected = levels.HARD;
+                $level.text("Hard");
+                break;
+            case levels.HARD :
+                levelSelected = levels.EASY;
+                $level.text("Easy");
+                break;
+        }
+
+        controller.startGame();
     },
 
     processLeftClick: function (eventObj) {
         let cell = eventObj.target;
         if (cell.className !== "flag") {
-            model.cellChecker(cell);
+            model.cellChecker($("#" + cell.id));
         }
     },
 
     processRightClick: function (eventObj) {
         let cell = eventObj.target;
-        model.flag(cell);
+        model.flag($("#" + cell.id));
     }
 }
 
-window.onload = init;
-
-function init() {
-    mines = document.getElementById("mines");
-    time = document.getElementById("time");
-    newGame = document.getElementById("newGame");
+$(function () {
+    mines = $("#mines");
+    time = $("#time");
+    newGame = $("#newGame");
+    level = $("#level");
 
     controller.startGame();
 
-    let cells = document.getElementsByTagName("td");
-    for (let i = 3; i < cells.length; i++) {
-        cells[i].onclick = handleLeftClick;
-        cells[i].oncontextmenu = handleRightClick;
-    }
+    newGame.click(controller.startGame);
+    level.click(controller.levelChange);
 
-    newGame.onclick = controller.startGame;
-
-    document.getElementById("board").oncontextmenu = function (eventObj) {
+    $("#board").contextmenu(function (eventObj) {
         eventObj.preventDefault();
-    }
-}
-
-function handleLeftClick(eventObj) {
-    if (!gameOver) {
-        controller.processLeftClick(eventObj);
-    }
-}
-
-function handleRightClick(eventObj) {
-    if (!gameOver) {
-        controller.processRightClick(eventObj);
-    }
-}
+    });
+});
