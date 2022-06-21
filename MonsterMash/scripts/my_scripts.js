@@ -35,6 +35,7 @@ $(function(){
 
     let clix = [0, 0, 0, 0];
     rain = new Audio("sounds/lightRain.wav");
+    rain.loop = true;
     thunder[0] = new Audio("sounds/thunder1.mp3");
     thunder[1] = new Audio("sounds/thunder2.mp3");
     thunder[2] = new Audio("sounds/thunder3.mp3");
@@ -79,14 +80,7 @@ $(function(){
     const w = 367;
     const m = 10;
 
-    $("#btnRandom").on("click", randomize);
-    $("#btnReset").on("click", reset);
-
-    function getRandom(num) {
-        return Math.floor(Math.random()*num);
-    }
-
-    function randomize(){
+    $("#btnRandom").click(function () {
         $(".face").each(function (index){
             let target_position = getRandom(m);
             let current_position = clix[index];
@@ -100,12 +94,38 @@ $(function(){
                 $(this).animate({left:"+=" + move_to + "px"}, 500);
             }
         });
-    }
+    });
 
-    function reset(){
+    $("#btnReset").click(function () {
         $(".face").each(function (index){
             $(this).animate({left: "0px"}, 500);
             clix[index] = 0;
+        });
+    });
+
+    $("#btnDownload").click(function () {
+        printToFile($("#frame").get(0));
+    });
+
+    function getRandom(num) {
+        return Math.floor(Math.random()*num);
+    }
+
+    function downloadURI(uri, name) {
+        let link = document.createElement("a");
+        link.download = name;
+        link.href = uri;
+        link.click();
+        //clearDynamicLink(link);
+    }
+
+    function printToFile(div) {
+        html2canvas(div).then(function (canvas) {
+                let myImage = canvas.toDataURL("image/png");
+                //create your own dialog with warning before saving file
+                //beforeDownloadReadMessage();
+                //Then download file
+                downloadURI("data:" + myImage, "monster.png");
         });
     }
 });
